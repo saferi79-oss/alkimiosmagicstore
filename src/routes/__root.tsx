@@ -17,12 +17,12 @@ export const Route = createRootRoute({
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       {
         title:
-          "Alkimios — Tarot Terapéutico, Astrología y Acompañamiento Holístico",
+          "Alkimios — Acompañamiento holístico y prácticas alquímicas",
       },
       {
         name: "description",
         content:
-          "Acompañamiento holístico y prácticas alquímicas. Tarot terapéutico PCT, cartas astrales, astrocartografía y grimorios digitales. Donde la llama ilumina el camino interior.",
+          "Acompañamiento holístico y prácticas alquímicas: Aritmomancia, Cartomancía, Sinastría, Tránsitos planetarios, Carta astral, Oráculos rúnicos y Psicomagia. Donde la llama ilumina el camino interior.",
       },
     ],
     links: [
@@ -83,19 +83,19 @@ function Header() {
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
           >
-            {/* Crescent moon */}
+            {/* Crescent moon — Hécate emblem */}
             <circle
               cx="50"
               cy="50"
               r="44"
               fill="var(--color-gold)"
-              opacity="0.9"
+              opacity="0.85"
             />
             <circle cx="60" cy="44" r="38" fill="var(--color-carbon)" />
-            {/* Small stars */}
-            <circle cx="28" cy="32" r="1.8" fill="var(--color-gold)" />
-            <circle cx="72" cy="28" r="1.2" fill="var(--color-gold)" />
-            <circle cx="80" cy="65" r="1" fill="var(--color-gold)" />
+            {/* Triple-moon dots */}
+            <circle cx="25" cy="30" r="2" fill="var(--color-gold)" />
+            <circle cx="72" cy="26" r="1.4" fill="var(--color-gold)" />
+            <circle cx="78" cy="64" r="1.2" fill="var(--color-gold)" />
           </svg>
           <span className="header-logo-text">Alkimios</span>
         </Link>
@@ -132,6 +132,15 @@ function Header() {
             </li>
             <li>
               <Link
+                to="/linaje"
+                onClick={() => setMenuOpen(false)}
+                activeProps={{ className: "active" }}
+              >
+                El Linaje
+              </Link>
+            </li>
+            <li>
+              <Link
                 to="/tienda"
                 onClick={() => setMenuOpen(false)}
                 activeProps={{ className: "active" }}
@@ -145,7 +154,7 @@ function Header() {
                 onClick={() => setMenuOpen(false)}
                 activeProps={{ className: "active" }}
               >
-                Sobre Alkimios
+                Sobre mí
               </Link>
             </li>
             <li>
@@ -173,8 +182,9 @@ function Footer() {
         <div className="footer-links">
           <Link to="/">Inicio</Link>
           <Link to="/servicios">Servicios</Link>
+          <Link to="/linaje">El Linaje</Link>
           <Link to="/tienda">Tienda</Link>
-          <Link to="/sobre">Sobre Alkimios</Link>
+          <Link to="/sobre">Sobre mí</Link>
           <Link to="/contacto">Contacto</Link>
         </div>
         <p className="footer-copy">

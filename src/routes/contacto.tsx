@@ -26,15 +26,14 @@ function Contacto() {
           <div className="contact-info">
             <h3>Hablemos</h3>
             <p>
-              Cada sesión comienza con un mensaje. Cuéntame qué te trae hasta
-              aquí: una pregunta, una inquietud, un momento de transición, una
-              búsqueda. Leo cada mensaje personalmente y respondo en un plazo
-              de 24 a 48 horas.
+              Cada sesión comienza con un mensaje. Cuéntame qué te trae hasta aquí:
+              una pregunta, una inquietud, un momento de transición, una búsqueda.
+              Leo cada mensaje personalmente y respondo en un plazo de 24 a 48 horas.
             </p>
             <p>
-              Si prefieres un primer contacto más directo, sígueme en
-              Instagram. Allí comparto reflexiones, arquetipos de la semana,
-              fragmentos del grimorio y avisos de nuevas aperturas de agenda.
+              Si prefieres un primer contacto más directo, sígueme en Instagram.
+              Allí comparto reflexiones, arquetipos de la semana, fragmentos del
+              grimorio y avisos de nuevas aperturas de agenda.
             </p>
 
             <div className="contact-social">
@@ -66,7 +65,7 @@ function Contacto() {
             onSubmit={(e) => {
               e.preventDefault();
               alert(
-                "Gracias por tu mensaje. Te responderé pronto. — Alkimios"
+                "Gracias por tu mensaje. Te responderé pronto. — Sabrina"
               );
               (e.target as HTMLFormElement).reset();
             }}

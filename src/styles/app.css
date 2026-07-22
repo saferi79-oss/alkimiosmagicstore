@@ -1,6 +1,9 @@
 /* ============================================================
-   ALKIMIOS — STUDIOLO RENACENTISTA
-   Paleta: carbón, terracota, lapislázuli, oro viejo, pergamino
+   ALKIMIOS — WATERHOUSE / SIMBOLISTA
+   Paleta: carbón, verde botella, azul noche, oro viejo mate,
+           crema/hueso, oxblood (Psicomagia)
+   Referencias: Circe entronizada (Waterhouse), El Aquelarre (Goya),
+                gabinete de curiosidades victoriano
    ============================================================ */
 
 /* ---------- Google Fonts ---------- */
@@ -8,19 +11,21 @@
 
 /* ---------- CSS Custom Properties ---------- */
 :root {
-  --color-carbon: #0a0a0a;
+  --color-carbon: #0d0d0d;
   --color-carbon-soft: #111111;
   --color-carbon-mid: #1a1a1a;
-  --color-terracotta: #8b3a3a;
-  --color-terracotta-light: #a85555;
-  --color-terracotta-dark: #6b2c2c;
-  --color-lapis: #1c2541;
-  --color-lapis-light: #2a3558;
+  --color-bottle-green: #1a3a2a;
+  --color-bottle-green-glow: rgba(26, 58, 42, 0.3);
+  --color-night-blue: #1a1a2e;
+  --color-night-blue-glow: rgba(26, 26, 46, 0.35);
+  --color-oxblood: #4a1a1a;
+  --color-oxblood-border: #5a2424;
+  --color-oxblood-glow: rgba(74, 26, 26, 0.25);
   --color-gold: #b8963e;
-  --color-gold-light: #d4b65e;
+  --color-gold-light: #c9a94e;
   --color-gold-dark: #8a6e2a;
   --color-gold-muted: #7a6a40;
-  --color-parchment: #e8dcc8;
+  --color-parchment: #e8e0d5;
   --color-parchment-muted: #c4b896;
   --color-parchment-dark: #a09880;
 
@@ -54,27 +59,26 @@ body {
   color: var(--color-parchment);
   line-height: 1.7;
   min-height: 100dvh;
-  /* Subtle vignette */
   background-image:
-    radial-gradient(ellipse at center, transparent 60%, rgba(0, 0, 0, 0.6) 100%);
+    radial-gradient(ellipse at center, transparent 55%, rgba(0, 0, 0, 0.65) 100%);
   background-attachment: fixed;
 }
 
-/* Subtle parchment texture overlay */
+/* Subtle texture overlay — aged paper grain */
 body::before {
   content: '';
   position: fixed;
   inset: 0;
   z-index: 0;
   pointer-events: none;
-  opacity: 0.03;
+  opacity: 0.025;
   background-image:
     repeating-linear-gradient(
       0deg,
       transparent,
-      transparent 2px,
-      rgba(184, 150, 62, 0.1) 2px,
-      rgba(184, 150, 62, 0.1) 3px
+      transparent 3px,
+      rgba(184, 150, 62, 0.08) 3px,
+      rgba(184, 150, 62, 0.08) 4px
     );
 }
 
@@ -105,7 +109,7 @@ img {
 /* ---------- Typography ---------- */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-title);
-  font-weight: 500;
+  font-weight: 400;
   line-height: 1.2;
   color: var(--color-parchment);
 }
@@ -134,8 +138,16 @@ p {
   background-color: var(--color-carbon-soft);
 }
 
-.section--accent {
-  background-color: var(--color-lapis);
+.section--bottle {
+  background:
+    radial-gradient(ellipse at 50% 30%, var(--color-bottle-green-glow) 0%, transparent 60%),
+    var(--color-carbon);
+}
+
+.section--night {
+  background:
+    radial-gradient(ellipse at 50% 30%, var(--color-night-blue-glow) 0%, transparent 60%),
+    var(--color-carbon);
 }
 
 /* ---------- Header / Nav ---------- */
@@ -143,10 +155,10 @@ p {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(10, 10, 10, 0.92);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(184, 150, 62, 0.15);
+  background: rgba(13, 13, 13, 0.94);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(184, 150, 62, 0.12);
   transition: background 0.3s ease;
 }
 
@@ -193,7 +205,7 @@ p {
   display: inline-block;
   padding: 0.5rem 1rem;
   font-family: var(--font-body);
-  font-size: 0.875rem;
+  font-size: 0.85rem;
   font-weight: 400;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -205,7 +217,7 @@ p {
 .nav-links a:hover,
 .nav-links a.active {
   color: var(--color-gold);
-  background: rgba(184, 150, 62, 0.08);
+  background: rgba(184, 150, 62, 0.07);
 }
 
 /* Mobile nav toggle */
@@ -243,7 +255,7 @@ p {
 .site-footer {
   margin-top: auto;
   background: var(--color-carbon-soft);
-  border-top: 1px solid rgba(184, 150, 62, 0.12);
+  border-top: 1px solid rgba(184, 150, 62, 0.1);
   padding: 3rem 1.5rem 2rem;
   text-align: center;
 }
@@ -283,6 +295,7 @@ p {
 .footer-copy {
   font-size: 0.8rem;
   color: var(--color-parchment-dark);
+  margin-bottom: 0.5rem;
 }
 
 .footer-instagram {
@@ -308,8 +321,8 @@ p {
   text-align: center;
   overflow: hidden;
   background:
-    radial-gradient(ellipse at 50% 40%, rgba(28, 37, 65, 0.5) 0%, transparent 60%),
-    radial-gradient(ellipse at 50% 100%, rgba(139, 58, 58, 0.2) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 35%, var(--color-night-blue-glow) 0%, transparent 55%),
+    radial-gradient(ellipse at 50% 90%, var(--color-bottle-green-glow) 0%, transparent 45%),
     var(--color-carbon);
 }
 
@@ -318,7 +331,7 @@ p {
   position: absolute;
   inset: 0;
   background-image:
-    radial-gradient(circle at 50% 45%, rgba(184, 150, 62, 0.06) 0%, transparent 40%);
+    radial-gradient(circle at 50% 40%, rgba(184, 150, 62, 0.05) 0%, transparent 40%);
   pointer-events: none;
 }
 
@@ -327,7 +340,7 @@ p {
   inset: 0;
   pointer-events: none;
   background:
-    radial-gradient(ellipse at center, transparent 50%, rgba(0, 0, 0, 0.7) 100%);
+    radial-gradient(ellipse at center, transparent 45%, rgba(0, 0, 0, 0.7) 100%);
   z-index: 1;
 }
 
@@ -342,7 +355,7 @@ p {
   width: clamp(100px, 15vw, 160px);
   height: auto;
   margin: 0 auto 2rem;
-  animation: emblem-float 6s ease-in-out infinite;
+  animation: emblem-float 7s ease-in-out infinite;
 }
 
 @keyframes emblem-float {
@@ -380,13 +393,7 @@ p {
   display: block;
   width: 60px;
   height: 1px;
-  background: linear-gradient(to right, transparent, var(--color-gold), transparent);
-}
-
-.hero-ornament-line {
-  width: 80px;
-  height: 1px;
-  background: var(--color-gold-muted);
+  background: linear-gradient(to right, transparent, var(--color-gold-muted), transparent);
 }
 
 /* ---------- Buttons ---------- */
@@ -395,18 +402,19 @@ p {
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  padding: 0.85rem 2.2rem;
+  padding: 0.9rem 2.2rem;
   font-family: var(--font-body);
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   font-weight: 500;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   border: 1px solid var(--color-gold);
   border-radius: 2px;
   cursor: pointer;
-  transition: all 0.4s ease;
+  transition: all 0.35s ease;
   background: transparent;
   color: var(--color-gold);
+  text-decoration: none;
 }
 
 .btn:hover {
@@ -435,125 +443,19 @@ p {
 .btn--outline:hover {
   border-color: var(--color-gold);
   color: var(--color-gold);
-  background: rgba(184, 150, 62, 0.08);
+  background: rgba(184, 150, 62, 0.07);
 }
 
-.btn--terracotta {
+.btn--oxblood {
   background: transparent;
-  color: var(--color-terracotta-light);
-  border-color: var(--color-terracotta);
-}
-
-.btn--terracotta:hover {
-  background: var(--color-terracotta);
   color: var(--color-parchment);
+  border-color: var(--color-oxblood-border);
 }
 
-/* ---------- Arched Cards ---------- */
-.arch-card {
-  position: relative;
-  background: var(--color-carbon-mid);
-  border: 1px solid rgba(184, 150, 62, 0.12);
-  border-radius: var(--arch-radius);
-  border-bottom-left-radius: 4px;
-  border-bottom-right-radius: 4px;
-  overflow: hidden;
-  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.arch-card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(184, 150, 62, 0.35);
-  box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4), 0 0 60px rgba(184, 150, 62, 0.04);
-}
-
-.arch-card__image {
-  width: 100%;
-  aspect-ratio: 1.4;
-  object-fit: cover;
-  border-radius: var(--arch-radius);
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-}
-
-.arch-card__body {
-  padding: 1.5rem 1.75rem 2rem;
-}
-
-.arch-card__title {
-  font-family: var(--font-title);
-  font-size: 1.4rem;
-  font-weight: 500;
-  color: var(--color-gold);
-  margin-bottom: 0.5rem;
-}
-
-.arch-card__text {
-  font-size: 0.95rem;
-  color: var(--color-parchment-muted);
-  line-height: 1.6;
-  margin-bottom: 1.25rem;
-}
-
-.arch-card__footer {
-  padding: 0 1.75rem 1.5rem;
-}
-
-/* ---------- Pillars Grid (Home) ---------- */
-.pillars-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 2rem;
-  max-width: var(--max-width);
-  margin: 0 auto;
-}
-
-.pillar-card {
-  position: relative;
-  background: var(--color-carbon-mid);
-  border: 1px solid rgba(184, 150, 62, 0.1);
-  border-radius: var(--arch-radius);
-  border-bottom-left-radius: 4px;
-  border-bottom-right-radius: 4px;
-  padding: 2.5rem 1.75rem 2rem;
-  text-align: center;
-  transition: border-color 0.3s ease, transform 0.3s ease;
-}
-
-.pillar-card:hover {
-  border-color: rgba(184, 150, 62, 0.3);
-  transform: translateY(-3px);
-}
-
-.pillar-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 64px;
-  height: 64px;
-  margin: 0 auto 1.25rem;
-  border: 1px solid rgba(184, 150, 62, 0.2);
-  border-radius: 50%;
-  color: var(--color-gold);
-}
-
-.pillar-icon svg {
-  width: 28px;
-  height: 28px;
-}
-
-.pillar-title {
-  font-family: var(--font-title);
-  font-size: 1.25rem;
-  font-weight: 500;
+.btn--oxblood:hover {
+  background: var(--color-oxblood);
+  border-color: var(--color-oxblood-border);
   color: var(--color-parchment);
-  margin-bottom: 0.75rem;
-}
-
-.pillar-text {
-  font-size: 0.9rem;
-  color: var(--color-parchment-muted);
-  line-height: 1.6;
 }
 
 /* ---------- Section Headers ---------- */
@@ -574,7 +476,7 @@ p {
 .section-subtitle {
   font-size: 1.05rem;
   color: var(--color-parchment-muted);
-  max-width: 600px;
+  max-width: 620px;
   margin: 0 auto;
   font-style: italic;
   font-family: var(--font-title);
@@ -603,10 +505,81 @@ p {
   border-radius: 50%;
 }
 
-/* ---------- Service Page ---------- */
+.section-divider {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(184, 150, 62, 0.12) 20%,
+    rgba(184, 150, 62, 0.25) 50%,
+    rgba(184, 150, 62, 0.12) 80%,
+    transparent 100%
+  );
+}
+
+/* ---------- Pillars Grid (Home) ---------- */
+.pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2rem;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.pillar-card {
+  position: relative;
+  background: var(--color-carbon-mid);
+  border: 1px solid rgba(184, 150, 62, 0.08);
+  border-radius: var(--arch-radius);
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+  padding: 2.5rem 1.75rem 2rem;
+  text-align: center;
+  transition: border-color 0.35s ease, transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.pillar-card:hover {
+  border-color: rgba(184, 150, 62, 0.28);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.35);
+}
+
+.pillar-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 1.25rem;
+  border: 1px solid rgba(184, 150, 62, 0.18);
+  border-radius: 50%;
+  color: var(--color-gold);
+}
+
+.pillar-icon svg {
+  width: 28px;
+  height: 28px;
+}
+
+.pillar-title {
+  font-family: var(--font-title);
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: var(--color-parchment);
+  margin-bottom: 0.75rem;
+}
+
+.pillar-text {
+  font-size: 0.9rem;
+  color: var(--color-parchment-muted);
+  line-height: 1.6;
+}
+
+/* ---------- Service Page (Grid of 7 services) ---------- */
 .services-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 2.5rem;
   max-width: var(--max-width);
   margin: 0 auto;
@@ -621,6 +594,23 @@ p {
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  transition: border-color 0.35s ease, transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.service-card:hover {
+  border-color: rgba(184, 150, 62, 0.3);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.4);
+}
+
+/* Psicomagia card — oxblood treatment */
+.service-card--restricted {
+  border-color: rgba(90, 36, 36, 0.25);
+}
+
+.service-card--restricted:hover {
+  border-color: var(--color-oxblood-border);
+  box-shadow: 0 6px 30px rgba(74, 26, 26, 0.15);
 }
 
 .service-card__image {
@@ -646,12 +636,23 @@ p {
   color: var(--color-gold);
 }
 
+.service-card--restricted .service-card__icon {
+  color: #8b5a5a;
+}
+
 .service-card__title {
   font-family: var(--font-title);
   font-size: 1.5rem;
   font-weight: 500;
   color: var(--color-parchment);
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.3rem;
+}
+
+.service-card__meta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
 }
 
 .service-card__duration {
@@ -659,15 +660,51 @@ p {
   color: var(--color-gold-muted);
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  margin-bottom: 1rem;
+}
+
+.service-card__price {
+  font-family: var(--font-title);
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--color-gold);
+}
+
+.service-card--restricted .service-card__price {
+  color: #c48b8b;
 }
 
 .service-card__desc {
-  font-size: 0.95rem;
+  font-size: 0.93rem;
   color: var(--color-parchment-muted);
   line-height: 1.7;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
   flex: 1;
+}
+
+.service-card__requisite {
+  font-size: 0.82rem;
+  color: var(--color-parchment-dark);
+  font-style: italic;
+  margin-bottom: 1.5rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(184, 150, 62, 0.08);
+}
+
+.service-card--restricted .service-card__requisite {
+  border-top-color: rgba(90, 36, 36, 0.2);
+}
+
+.service-card__footer {
+  padding: 0 1.75rem 1.5rem;
+}
+
+/* Restricted access note */
+.restricted-notice {
+  font-size: 0.82rem;
+  color: #b08080;
+  font-style: italic;
+  margin-bottom: 1rem;
+  line-height: 1.5;
 }
 
 /* ---------- Store Page ---------- */
@@ -681,41 +718,54 @@ p {
 
 .product-card {
   background: var(--color-carbon-mid);
-  border: 1px solid rgba(184, 150, 62, 0.1);
+  border: 1px solid rgba(184, 150, 62, 0.08);
   border-radius: var(--arch-radius);
   border-bottom-left-radius: 4px;
   border-bottom-right-radius: 4px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  transition: border-color 0.3s ease, transform 0.3s ease;
+  transition: border-color 0.35s ease, transform 0.35s ease;
 }
 
 .product-card:hover {
-  border-color: rgba(184, 150, 62, 0.35);
+  border-color: rgba(184, 150, 62, 0.3);
   transform: translateY(-3px);
 }
 
 .product-card__cover {
   width: 100%;
   aspect-ratio: 0.75;
-  object-fit: cover;
-  background: var(--color-lapis);
+  background: linear-gradient(135deg, var(--color-bottle-green), var(--color-night-blue));
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: var(--arch-radius);
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.product-card__cover::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, transparent 50%, rgba(0,0,0,0.5) 100%);
 }
 
 .product-card__cover-placeholder {
+  position: relative;
+  z-index: 1;
   font-family: var(--font-title);
-  font-size: 3rem;
   color: var(--color-gold);
   text-align: center;
   padding: 1rem;
   line-height: 1.1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .product-card__body {
@@ -728,7 +778,7 @@ p {
   font-size: 1.3rem;
   font-weight: 500;
   color: var(--color-gold);
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.4rem;
 }
 
 .product-card__format {
@@ -736,7 +786,7 @@ p {
   color: var(--color-gold-muted);
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  margin-bottom: 1rem;
+  margin-bottom: 0.75rem;
 }
 
 .product-card__desc {
@@ -754,21 +804,116 @@ p {
   margin-bottom: 1.25rem;
 }
 
-/* ---------- About Page ---------- */
-.about-hero {
-  position: relative;
-  min-height: 40dvh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.product-card__footer {
+  padding: 0 1.75rem 1.5rem;
+}
+
+.store-section-title {
+  font-family: var(--font-title);
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: var(--color-parchment);
+  margin-bottom: 2rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid rgba(184, 150, 62, 0.15);
+}
+
+/* ---------- Linaje (Editorial) ---------- */
+.linaje-hero {
+  padding: 6rem 1.5rem 4rem;
   text-align: center;
   background:
-    radial-gradient(ellipse at 50% 40%, rgba(28, 37, 65, 0.4) 0%, transparent 60%),
+    radial-gradient(ellipse at 50% 30%, var(--color-night-blue-glow) 0%, transparent 55%),
+    radial-gradient(ellipse at 50% 70%, var(--color-bottle-green-glow) 0%, transparent 50%),
     var(--color-carbon);
 }
 
+.linaje-prose {
+  max-width: 760px;
+  margin: 0 auto;
+  font-size: 1.05rem;
+  line-height: 1.85;
+  color: var(--color-parchment-muted);
+}
+
+.linaje-prose p {
+  margin-bottom: 1.5rem;
+}
+
+.linaje-prose .dropcap::first-letter {
+  font-family: var(--font-title);
+  float: left;
+  font-size: 4.5rem;
+  line-height: 0.8;
+  padding-right: 0.5rem;
+  padding-top: 0.2rem;
+  color: var(--color-gold);
+}
+
+.eras-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.era-card {
+  background: var(--color-carbon-mid);
+  border: 1px solid rgba(184, 150, 62, 0.08);
+  border-radius: var(--arch-radius);
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+  padding: 2rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.35s ease, transform 0.35s ease;
+}
+
+.era-card:hover {
+  border-color: rgba(184, 150, 62, 0.25);
+  transform: translateY(-2px);
+}
+
+.era-card__num {
+  font-family: var(--font-title);
+  font-size: 3rem;
+  color: rgba(184, 150, 62, 0.1);
+  margin-bottom: 0.25rem;
+  line-height: 1;
+}
+
+.era-card__title {
+  font-family: var(--font-title);
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: var(--color-gold);
+  margin-bottom: 0.5rem;
+}
+
+.era-card__meta {
+  font-size: 0.8rem;
+  color: var(--color-gold-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.75rem;
+}
+
+.era-card__desc {
+  font-size: 0.9rem;
+  color: var(--color-parchment-muted);
+  line-height: 1.6;
+  flex: 1;
+  margin-bottom: 1.25rem;
+}
+
+.era-card__footer {
+  margin-top: auto;
+}
+
+/* ---------- About Page ---------- */
 .about-content {
-  max-width: 800px;
+  max-width: 760px;
   margin: 0 auto;
 }
 
@@ -790,45 +935,6 @@ p {
   padding-right: 0.5rem;
   padding-top: 0.2rem;
   color: var(--color-gold);
-}
-
-.pillars-extended {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-  max-width: var(--max-width);
-  margin: 0 auto;
-}
-
-.pillar-extended {
-  padding: 2rem;
-  border-left: 2px solid rgba(184, 150, 62, 0.2);
-  transition: border-color 0.3s ease;
-}
-
-.pillar-extended:hover {
-  border-left-color: var(--color-gold);
-}
-
-.pillar-extended__num {
-  font-family: var(--font-title);
-  font-size: 2.5rem;
-  color: rgba(184, 150, 62, 0.15);
-  margin-bottom: 0.5rem;
-}
-
-.pillar-extended__title {
-  font-family: var(--font-title);
-  font-size: 1.3rem;
-  font-weight: 500;
-  color: var(--color-gold);
-  margin-bottom: 0.75rem;
-}
-
-.pillar-extended__text {
-  font-size: 0.9rem;
-  color: var(--color-parchment-muted);
-  line-height: 1.7;
 }
 
 /* ---------- Contact Page ---------- */
@@ -903,9 +1009,9 @@ p {
 .form-input,
 .form-textarea {
   background: var(--color-carbon-mid);
-  border: 1px solid rgba(184, 150, 62, 0.15);
+  border: 1px solid rgba(184, 150, 62, 0.12);
   border-radius: 3px;
-  padding: 0.85rem 1rem;
+  padding: 0.9rem 1rem;
   font-family: var(--font-body);
   font-size: 0.95rem;
   color: var(--color-parchment);
@@ -916,7 +1022,7 @@ p {
 .form-input:focus,
 .form-textarea:focus {
   border-color: var(--color-gold);
-  box-shadow: 0 0 0 2px rgba(184, 150, 62, 0.1);
+  box-shadow: 0 0 0 2px rgba(184, 150, 62, 0.08);
 }
 
 .form-input::placeholder,
@@ -932,12 +1038,12 @@ p {
 /* ---------- CTA Banner ---------- */
 .cta-banner {
   text-align: center;
-  padding: 4rem 1.5rem;
+  padding: 4.5rem 1.5rem;
   background:
-    radial-gradient(ellipse at 50% 50%, rgba(28, 37, 65, 0.3) 0%, transparent 70%),
+    radial-gradient(ellipse at 50% 50%, var(--color-night-blue-glow) 0%, transparent 65%),
     var(--color-carbon-soft);
-  border-top: 1px solid rgba(184, 150, 62, 0.1);
-  border-bottom: 1px solid rgba(184, 150, 62, 0.1);
+  border-top: 1px solid rgba(184, 150, 62, 0.08);
+  border-bottom: 1px solid rgba(184, 150, 62, 0.08);
 }
 
 .cta-banner__title {
@@ -950,9 +1056,72 @@ p {
 .cta-banner__text {
   color: var(--color-parchment-muted);
   margin-bottom: 1.75rem;
-  max-width: 500px;
+  max-width: 520px;
   margin-left: auto;
   margin-right: auto;
+}
+
+/* ---------- Modal / Overlay for Psicomagia form ---------- */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  animation: fadeIn 0.25s ease;
+}
+
+.modal {
+  background: var(--color-carbon-mid);
+  border: 1px solid var(--color-oxblood-border);
+  border-radius: 4px;
+  max-width: 540px;
+  width: 100%;
+  max-height: 90dvh;
+  overflow-y: auto;
+  padding: 2.5rem 2rem;
+  position: relative;
+}
+
+.modal__title {
+  font-family: var(--font-title);
+  font-size: 1.75rem;
+  font-weight: 500;
+  color: var(--color-parchment);
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(90, 36, 36, 0.25);
+}
+
+.modal__close {
+  position: absolute;
+  top: 1rem;
+  right: 1.25rem;
+  background: none;
+  border: none;
+  color: var(--color-parchment-muted);
+  font-size: 1.5rem;
+  cursor: pointer;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: color 0.3s ease, background 0.3s ease;
+}
+
+.modal__close:hover {
+  color: var(--color-parchment);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
 /* ---------- Decorative Elements ---------- */
@@ -998,7 +1167,7 @@ p {
   inset: 0;
   pointer-events: none;
   z-index: 0;
-  opacity: 0.015;
+  opacity: 0.012;
   background-image:
     radial-gradient(circle at 20% 30%, rgba(184, 150, 62, 0.5) 0%, transparent 1px),
     radial-gradient(circle at 70% 60%, rgba(184, 150, 62, 0.5) 0%, transparent 1px),
@@ -1006,44 +1175,12 @@ p {
   background-size: 60px 60px;
 }
 
-/* ---------- Divider ---------- */
-.section-divider {
-  width: 100%;
-  height: 1px;
-  background: linear-gradient(
-    to right,
-    transparent 0%,
-    rgba(184, 150, 62, 0.15) 20%,
-    rgba(184, 150, 62, 0.3) 50%,
-    rgba(184, 150, 62, 0.15) 80%,
-    transparent 100%
-  );
-}
-
-/* ---------- Image Frame Effect ---------- */
-.frame-arch {
-  position: relative;
-  border-radius: var(--arch-radius);
-  border-bottom-left-radius: 4px;
-  border-bottom-right-radius: 4px;
-  overflow: hidden;
-  border: 1px solid rgba(184, 150, 62, 0.15);
-}
-
-.frame-arch::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background: linear-gradient(to bottom, rgba(10, 10, 10, 0) 70%, rgba(10, 10, 10, 0.6) 100%);
-}
-
 /* ---------- Page Hero (inner pages) ---------- */
 .page-hero {
   padding: 6rem 1.5rem 4rem;
   text-align: center;
   background:
-    radial-gradient(ellipse at 50% 30%, rgba(28, 37, 65, 0.3) 0%, transparent 60%),
+    radial-gradient(ellipse at 50% 30%, var(--color-night-blue-glow) 0%, transparent 55%),
     var(--color-carbon);
 }
 
@@ -1060,7 +1197,7 @@ p {
   font-size: 1.15rem;
   font-style: italic;
   color: var(--color-parchment-muted);
-  max-width: 560px;
+  max-width: 580px;
   margin: 0 auto;
 }
 
@@ -1073,8 +1210,8 @@ p {
     left: 0;
     right: 0;
     flex-direction: column;
-    background: rgba(10, 10, 10, 0.97);
-    border-bottom: 1px solid rgba(184, 150, 62, 0.15);
+    background: rgba(13, 13, 13, 0.97);
+    border-bottom: 1px solid rgba(184, 150, 62, 0.12);
     padding: 1rem 1.5rem;
     gap: 0.5rem;
   }
@@ -1098,7 +1235,7 @@ p {
   }
 
   .pillars-grid,
-  .pillars-extended {
+  .eras-grid {
     grid-template-columns: 1fr;
   }
 
@@ -1128,7 +1265,8 @@ p {
     padding: 1rem;
   }
 
-  .about-prose {
+  .about-prose,
+  .linaje-prose {
     font-size: 0.95rem;
   }
 }

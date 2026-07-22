@@ -9,18 +9,13 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as UploadRouteImport } from './routes/upload'
 import { Route as TiendaRouteImport } from './routes/tienda'
 import { Route as SobreRouteImport } from './routes/sobre'
 import { Route as ServiciosRouteImport } from './routes/servicios'
+import { Route as LinajeRouteImport } from './routes/linaje'
 import { Route as ContactoRouteImport } from './routes/contacto'
 import { Route as IndexRouteImport } from './routes/index'
 
-const UploadRoute = UploadRouteImport.update({
-  id: '/upload',
-  path: '/upload',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const TiendaRoute = TiendaRouteImport.update({
   id: '/tienda',
   path: '/tienda',
@@ -34,6 +29,11 @@ const SobreRoute = SobreRouteImport.update({
 const ServiciosRoute = ServiciosRouteImport.update({
   id: '/servicios',
   path: '/servicios',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LinajeRoute = LinajeRouteImport.update({
+  id: '/linaje',
+  path: '/linaje',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactoRoute = ContactoRouteImport.update({
@@ -50,61 +50,54 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/contacto': typeof ContactoRoute
+  '/linaje': typeof LinajeRoute
   '/servicios': typeof ServiciosRoute
   '/sobre': typeof SobreRoute
   '/tienda': typeof TiendaRoute
-  '/upload': typeof UploadRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/contacto': typeof ContactoRoute
+  '/linaje': typeof LinajeRoute
   '/servicios': typeof ServiciosRoute
   '/sobre': typeof SobreRoute
   '/tienda': typeof TiendaRoute
-  '/upload': typeof UploadRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/contacto': typeof ContactoRoute
+  '/linaje': typeof LinajeRoute
   '/servicios': typeof ServiciosRoute
   '/sobre': typeof SobreRoute
   '/tienda': typeof TiendaRoute
-  '/upload': typeof UploadRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/contacto' | '/servicios' | '/sobre' | '/tienda' | '/upload'
+  fullPaths: '/' | '/contacto' | '/linaje' | '/servicios' | '/sobre' | '/tienda'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/contacto' | '/servicios' | '/sobre' | '/tienda' | '/upload'
+  to: '/' | '/contacto' | '/linaje' | '/servicios' | '/sobre' | '/tienda'
   id:
     | '__root__'
     | '/'
     | '/contacto'
+    | '/linaje'
     | '/servicios'
     | '/sobre'
     | '/tienda'
-    | '/upload'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ContactoRoute: typeof ContactoRoute
+  LinajeRoute: typeof LinajeRoute
   ServiciosRoute: typeof ServiciosRoute
   SobreRoute: typeof SobreRoute
   TiendaRoute: typeof TiendaRoute
-  UploadRoute: typeof UploadRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/upload': {
-      id: '/upload'
-      path: '/upload'
-      fullPath: '/upload'
-      preLoaderRoute: typeof UploadRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/tienda': {
       id: '/tienda'
       path: '/tienda'
@@ -124,6 +117,13 @@ declare module '@tanstack/react-router' {
       path: '/servicios'
       fullPath: '/servicios'
       preLoaderRoute: typeof ServiciosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/linaje': {
+      id: '/linaje'
+      path: '/linaje'
+      fullPath: '/linaje'
+      preLoaderRoute: typeof LinajeRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contacto': {
@@ -146,10 +146,10 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ContactoRoute: ContactoRoute,
+  LinajeRoute: LinajeRoute,
   ServiciosRoute: ServiciosRoute,
   SobreRoute: SobreRoute,
   TiendaRoute: TiendaRoute,
-  UploadRoute: UploadRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
