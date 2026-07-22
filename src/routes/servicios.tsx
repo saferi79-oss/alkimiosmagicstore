@@ -156,13 +156,14 @@ function PsicomagiaModal({ onClose }: { onClose: () => void }) {
 
 /* ─── Service data ─── */
 interface ServiceData {
-  name: string;
-  price: string;
-  duration: string;
-  desc: string;
-  requisite: string;
-  icon: React.ReactNode;
-  restricted?: boolean;
+name: string;
+price: string;
+duration: string;
+desc: string;
+requisite: string;
+icon: React.ReactNode;
+restricted?: boolean;
+link?: string;
 }
 
 const services: ServiceData[] = [
@@ -173,6 +174,7 @@ const services: ServiceData[] = [
     desc: "La aritmomancia lee los números que te constituyen —tu nombre completo— como un mapa vibracional. No es numerología de horóscopo: es la ciencia simbólica de Pitágoras aplicada a tu firma, revelando patrones, talentos y desafíos que ya te pertenecen.",
     requisite: "Requisito: Nombre completo de la persona.",
     icon: <NumbersIcon />,
+    link: "https://calendly.com/saferi79/aritmomancia",
   },
   {
     name: "Cartomancía y PCT",
@@ -181,6 +183,7 @@ const services: ServiceData[] = [
     desc: "El Tarot Terapéutico con enfoque PCT (Psicoterapia Centrada en el Tarot) no predice el futuro: revela lo que ya está presente en tu psique. Trabajamos con los arquetipos como espejos del inconsciente, guiando una conversación que ilumina patrones, bloqueos y potencias dormidas.",
     requisite: "Sin requisitos previos.",
     icon: <TarotIcon />,
+    link: "https://calendly.com/saferi79/cartomancia-y-pct",
   },
   {
     name: "Sinastría de cartas astrales",
@@ -189,6 +192,7 @@ const services: ServiceData[] = [
     desc: "La sinastría es el arte de leer dos cartas astrales en relación. Revela las dinámicas planetarias entre dos personas —pareja, amistad, vínculo familiar o laboral— mostrando dónde fluye la energía, dónde se tensa, y qué lección mutua está operando bajo la superficie.",
     requisite: "Requisito: Datos de ambas cartas (iniciales, fecha, hora y lugar de nacimiento de cada persona).",
     icon: <SynastryIcon />,
+    link: "https://calendly.com/saferi79/sinastria-de-cartas-astrales",
   },
   {
     name: "Tránsitos planetarios",
@@ -197,6 +201,7 @@ const services: ServiceData[] = [
     desc: "Los tránsitos muestran cómo los planetas en su movimiento actual dialogan con tu carta natal. Una herramienta de timing sagrado para entender los momentos de crisis, expansión o cierre que estás viviendo —no como accidentes, sino como fases de un proceso mayor.",
     requisite: "Requisito: Iniciales, fecha de nacimiento, hora de nacimiento, lugar de nacimiento.",
     icon: <TransitIcon />,
+    link: "https://calendly.com/saferi79/transitos-planetarios",
   },
   {
     name: "Carta astral",
@@ -205,6 +210,7 @@ const services: ServiceData[] = [
     desc: "Tu carta astral es la huella del cosmos en el instante de tu nacimiento. Leo la posición de los planetas, las casas y los aspectos como un mapa simbólico de tu psique: tu Sol, tu Luna, tu ascendente y las tensiones que te constituyen.",
     requisite: "Requisito: Iniciales, fecha de nacimiento, hora de nacimiento, lugar de nacimiento.",
     icon: <AstroIcon />,
+    link: "https://calendly.com/saferi79/carta-astral",
   },
   {
     name: "Oráculos rúnicos",
@@ -213,6 +219,7 @@ const services: ServiceData[] = [
     desc: "Lectura general con el alfabeto rúnico del Futhark antiguo. Cada runa es un portal simbólico que habla el lenguaje de lo germinal. La tirada ofrece orientación y consejo para quien busca claridad sin intermediarios: las runas no endulzan, pero siempre dicen lo necesario.",
     requisite: "Sin requisitos previos.",
     icon: <RuneIcon />,
+    link: "https://calendly.com/saferi79/oraculos-runicos",
   },
   {
     name: "Psicomagia",
@@ -275,7 +282,7 @@ function Servicios() {
                     </button>
                   </>
                 ) : (
-                  <a href="/contacto" className="btn btn--primary">
+                  <a href={svc.link ?? "/contacto"} className="btn btn--primary" target={svc.link?.startsWith("http") ? "_blank" : undefined} rel={svc.link?.startsWith("http") ? "noopener noreferrer" : undefined}>
                     Agendar
                   </a>
                 )}
