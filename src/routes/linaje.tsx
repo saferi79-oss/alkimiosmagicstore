@@ -9,66 +9,106 @@ interface EraData {
   num: string;
   title: string;
   period: string;
-  women: string;
-  desc: string;
+  figuras: string[];
+  available: boolean;
 }
 
 const eras: EraData[] = [
   {
     num: "I",
-    title: "Antigüedad clásica",
-    period: "Siglo V a.C. — V d.C.",
-    women: "6 mujeres",
-    desc: "Filósofas, médicas y poetisas del mundo grecorromano que sostuvieron escuelas, escribieron tratados y desafiaron los límites impuestos a su género. Hipatia de Alejandría y Aspasia de Mileto abren el linaje.",
+    title: "Antigüedad: diosas y arquetipos primordiales",
+    period: "Mitología, sin fecha fija",
+    figuras: [
+      "Hécate",
+      "Artemisa",
+      "Circe",
+      "Medea",
+      "Lilith",
+      "Cybele",
+      "Aradia",
+      "la Tríada romana",
+    ],
+    available: true,
   },
   {
     num: "II",
-    title: "Edad Media temprana",
-    period: "Siglo V — X",
-    women: "5 mujeres",
-    desc: "Abadesas, místicas y sanadoras en una Europa que apenas empezaba a nombrarse. Hildegarda de Bingen, que escribió de medicina, música y teología con una autoridad que ningún hombre de su tiempo discutió.",
+    title: "El mundo bíblico y gnóstico",
+    period: "~Siglo XIII a.C. – siglo I d.C.",
+    figuras: [
+      "María Magdalena",
+      "Miriam",
+      "Ester",
+      "la Bruja de Endor",
+      "Salomé",
+    ],
+    available: false,
   },
   {
     num: "III",
-    title: "Al-Ándalus y mundo islámico",
-    period: "Siglo VIII — XV",
-    women: "4 mujeres",
-    desc: "Poetisas, copistas y sabias en las cortes de Córdoba, Granada y Bagdad. Mujeres que heredaron y transmitieron el conocimiento clásico mientras Europa lo olvidaba.",
+    title: "Las videntes del mundo antiguo",
+    period: "~Siglo XII a.C. – siglo IV d.C.",
+    figuras: [
+      "las Pitias del Oráculo de Delfos",
+      "Casandra",
+      "Diotima de Mantinea",
+    ],
+    available: false,
   },
   {
     num: "IV",
-    title: "Renacimiento",
-    period: "Siglo XIV — XVI",
-    women: "5 mujeres",
-    desc: "Pintoras, mecenas y alquimistas en una época que redescubrió a Hermes Trismegisto pero seguía quemando a las que sabían demasiado. Artemisia Gentileschi pintó a Judit decapitando a Holofernes —y a su propio agresor.",
+    title: "Mitología celta y figuras folklóricas",
+    period: "Tradición oral, fechas variables",
+    figuras: ["La Morrigan", "Baba Yaga"],
+    available: false,
   },
   {
     num: "V",
-    title: "Siglo de las brujas",
-    period: "Siglo XVI — XVII",
-    women: "8 mujeres",
-    desc: "La era más oscura del linaje: la caza de brujas europea y colonial. Curanderas, parteras y mujeres sabias fueron perseguidas, torturadas y ejecutadas. Pero también hubo quien sobrevivió, quien escribió, quien transmitió en secreto.",
+    title: "Edad Media y Renacimiento",
+    period: "Siglos V–XVI",
+    figuras: [
+      "Hipatia",
+      "Hildegarda de Bingen",
+      "Juana de Arco",
+      "Ana Bolena",
+    ],
+    available: false,
   },
   {
     num: "VI",
-    title: "Ilustración y revolución",
-    period: "Siglo XVIII",
-    women: "5 mujeres",
-    desc: "Salonnières, científicas y revolucionarias que usaron la razón como antorcha. Olympe de Gouges escribió la Declaración de los Derechos de la Mujer y la Ciudadana; la guillotina la esperaba.",
+    title: "La Inquisición y los juicios de brujas",
+    period: "Siglos XVI–XVII",
+    figuras: [
+      "Agnes Sampson",
+      "Isobel Gowdie",
+      "Tituba",
+      "Mary Bradbury",
+    ],
+    available: false,
   },
   {
     num: "VII",
-    title: "Siglo XIX: ocultismo y sufragio",
-    period: "Siglo XIX",
-    women: "6 mujeres",
-    desc: "Teósofas, espiritistas y sufragistas. Madame Blavatsky, Annie Besant, las hermanas Fox. El siglo en que el esoterismo y la lucha política se encontraron en los mismos cuerpos. Las mujeres que hablaban con los muertos también hablaban en las plazas.",
+    title: "Tradición viva y ocultismo",
+    period: "Siglos XVIII–XIX",
+    figuras: [
+      "Helena Blavatsky",
+      "Mina Mathers",
+      "Anna Kingsford",
+      "Marie Laveau",
+    ],
+    available: false,
   },
   {
     num: "VIII",
-    title: "Siglo XX y contemporáneas",
-    period: "Siglo XX — XXI",
-    women: "4 mujeres",
-    desc: "Psicólogas junguianas, astrólogas humanísticas, escritoras del inconsciente. Marie-Louise von Franz, Liz Greene, Clarissa Pinkola Estés. Mujeres que tradujeron el símbolo al lenguaje de nuestro tiempo.",
+    title: "Las que reconstruyeron el linaje",
+    period: "Siglo XX",
+    figuras: [
+      "Doreen Valiente",
+      "Starhawk",
+      "Dion Fortune",
+      "Zsuzsanna Budapest",
+      "Sybil Leek",
+    ],
+    available: false,
   },
 ];
 
@@ -132,14 +172,21 @@ function Linaje() {
             <div key={era.num} className="era-card">
               <div className="era-card__num">{era.num}</div>
               <h3 className="era-card__title">{era.title}</h3>
-              <p className="era-card__meta">
-                {era.period} &middot; {era.women}
-              </p>
-              <p className="era-card__desc">{era.desc}</p>
+              <p className="era-card__meta">{era.period}</p>
+              <div className="era-card__figures">
+                <span className="era-card__figures-label">Figuras</span>
+                <p className="era-card__figures-list">
+                  {era.figuras.join(" · ")}
+                </p>
+              </div>
               <div className="era-card__footer">
-                <Link to="/tienda" className="btn btn--outline">
-                  Adquirir PDF
-                </Link>
+                {era.available ? (
+                  <Link to="/tienda" className="btn btn--outline">
+                    Adquirir PDF
+                  </Link>
+                ) : (
+                  <span className="era-card__coming-soon">Próximamente</span>
+                )}
               </div>
             </div>
           ))}
