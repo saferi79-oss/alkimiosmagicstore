@@ -11,6 +11,7 @@ interface EraData {
   period: string;
   figuras: string[];
   available: boolean;
+  price?: string;
 }
 
 const eras: EraData[] = [
@@ -29,6 +30,7 @@ const eras: EraData[] = [
       "la Tríada romana",
     ],
     available: true,
+    price: "$380 MXN",
   },
   {
     num: "II",
@@ -181,9 +183,12 @@ function Linaje() {
               </div>
               <div className="era-card__footer">
                 {era.available ? (
-                  <Link to="/tienda" className="btn btn--outline">
-                    Adquirir PDF
-                  </Link>
+                  <>
+                    {era.price && <span className="era-card__price">{era.price}</span>}
+                    <Link to="/tienda" className="btn btn--outline">
+                      Adquirir PDF
+                    </Link>
+                  </>
                 ) : (
                   <span className="era-card__coming-soon">Próximamente</span>
                 )}

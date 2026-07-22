@@ -9,7 +9,7 @@ const GRIMORIO = {
   title: "Grimorio de Práctica Viva",
   format: "PDF descargable",
   desc: "Rituales, cartomancía y bitácora de trabajo alquímico. Mi grimorio personal, puesto por escrito para quien esté listo para leerlo.",
-  price: "$ — MXN",
+  price: "$250 MXN",
 } as const;
 
 const GUIAS: { title: string; desc: string; price: string; comingSoon?: boolean }[] = [

@@ -942,6 +942,15 @@ p {
   border-radius: 2px;
 }
 
+.era-card__price {
+  display: block;
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--color-gold);
+  margin-bottom: 0.5rem;
+}
+
 .era-card__footer {
   margin-top: auto;
 }
