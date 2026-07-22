@@ -58,7 +58,7 @@ function Tienda() {
                   viewBox="0 0 120 160"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
-                  style={{ width: "70%", maxWidth: 140 }}
+                  style={{ width: "45%", maxWidth: 90 }}
                 >
                   <rect
                     x="10"
@@ -145,7 +145,7 @@ function Tienda() {
                     viewBox="0 0 120 160"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
-                    style={{ width: "70%", maxWidth: 140 }}
+                    style={{ width: "45%", maxWidth: 90 }}
                   >
                     <rect
                       x="10"
